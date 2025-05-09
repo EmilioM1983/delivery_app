@@ -3,7 +3,8 @@ Aplicación de consola funcional que simule una plataforma de delivery de alimen
 
 ## 01 - Github y Gitflow
 * El proyecto seguira el marco de trabajo de gitflow.<br>
-![{C33FA2DE-BD80-40D7-B391-EF9B1FA11109}](https://github.com/user-attachments/assets/58372851-561e-4199-8fd2-a40d0a05a441)
+![Descripción de la imagen](gitflow.jpg)
+
 
 
 
