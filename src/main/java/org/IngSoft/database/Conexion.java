@@ -23,7 +23,7 @@ public class Conexion {
                 conectar = DriverManager.getConnection(cadena,usuario,contrasenia);
                 //JOptionPane.showMessageDialog(null, "Conexión correcta");
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, "No se realizo la conexión "+e.toString());
+                JOptionPane.showMessageDialog(null, "No se realizo la conexión "+e.toString());
             }
             return conectar;
         }
@@ -35,7 +35,7 @@ public class Conexion {
                     //JOptionPane.showMessageDialog(null, "Conexión cerrada");
                 }
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, "No se ha cerrado la conexión"+e.toString());
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexión"+e.toString());
             }
         }
     }
