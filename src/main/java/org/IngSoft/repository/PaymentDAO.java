@@ -25,7 +25,7 @@ public class PaymentDAO {
 
         // Consulta SQL que une las tablas order_items y products para calcular el precio total
         String sql = "SELECT oi.quantity, p.price FROM order_items oi " +
-                "JOIN products p ON oi.products_id = p.id AND oi.products_Restaurants_idRestaurants = p.Restaurants_idRestaurants " +
+                "JOIN products p ON oi.products_id = p.id\n " +
                 "WHERE oi.id = ?";
 
 
