@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `db_delivery`.`users` (
   `id` INT NOT NULL,
   `username` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
-  `rol` ENUM('Client', 'Restaurant', 'Dealer') NULL,
+  `rol` ENUM('Client', 'Restaurant', 'Dealer', 'Admin') NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -48,12 +48,12 @@ ENGINE = InnoDB;
 -- Table `db_delivery`.`products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_delivery`.`products` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `price` DOUBLE NULL,
   `Restaurants_idRestaurants` INT NOT NULL,
   `restaurants_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `Restaurants_idRestaurants`),
+  PRIMARY KEY (`id`),
   INDEX `fk_products_restaurants1_idx` (`restaurants_id` ASC) VISIBLE,
   CONSTRAINT `fk_products_restaurants1`
     FOREIGN KEY (`restaurants_id`)
@@ -150,20 +150,19 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `db_delivery`.`order_items` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NULL,
-  `products_id` INT NOT NULL,
-  `products_Restaurants_idRestaurants` INT NOT NULL,
   `orders_id` INT NOT NULL,
+  `products_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_order_items_products1_idx` (`products_id` ASC, `products_Restaurants_idRestaurants` ASC) VISIBLE,
   INDEX `fk_order_items_orders1_idx` (`orders_id` ASC) VISIBLE,
-  CONSTRAINT `fk_order_items_products1`
-    FOREIGN KEY (`products_id` , `products_Restaurants_idRestaurants`)
-    REFERENCES `db_delivery`.`products` (`id` , `Restaurants_idRestaurants`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_order_items_products1_idx` (`products_id` ASC) VISIBLE,
   CONSTRAINT `fk_order_items_orders1`
     FOREIGN KEY (`orders_id`)
     REFERENCES `db_delivery`.`orders` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_items_products1`
+    FOREIGN KEY (`products_id`)
+    REFERENCES `db_delivery`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

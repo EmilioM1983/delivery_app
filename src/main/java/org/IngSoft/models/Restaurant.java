@@ -49,4 +49,14 @@ public class Restaurant {
     public void setUserId(long userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", addres='" + addres + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

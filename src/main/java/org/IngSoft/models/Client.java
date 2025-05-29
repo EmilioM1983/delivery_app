@@ -69,4 +69,16 @@ public class Client {
     public void setUserId(long userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", adress='" + adress + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

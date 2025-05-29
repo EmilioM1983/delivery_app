@@ -6,19 +6,19 @@ public class Dealer {
     private String name;
     private String lastName;
     private String phone;
-
+    private long userId;
     //Constructores
     public Dealer() {
     }
 
-    public Dealer(long id, String name, String lastName, String phone) {
+    public Dealer(long id, String name, String lastName, String phone, long userId) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;
+        this.userId = userId;
     }
 
-    //Gets & Sets
     public long getId() {
         return id;
     }
@@ -49,5 +49,24 @@ public class Dealer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Dealer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

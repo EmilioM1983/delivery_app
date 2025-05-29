@@ -1,6 +1,7 @@
 package org.IngSoft;
 
 import org.IngSoft.database.Conexion;
+import org.IngSoft.ui.MenuAppUi;
 import org.IngSoft.ui.PaymentUI;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -8,7 +9,7 @@ import org.IngSoft.ui.PaymentUI;
 public class Main {
     public static void main(String[] args) {
 
-        PaymentUI paymentUI = new PaymentUI();
-        paymentUI.menuPagos();
+        MenuAppUi menuAppUi = new MenuAppUi();
+        menuAppUi.menuPrincipal();
         }
     }
