@@ -4,10 +4,7 @@ import org.IngSoft.database.Conexion;
 import org.IngSoft.models.Enum.Role;
 import org.IngSoft.models.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +57,7 @@ public class UserDao {
 
         return false;
     }
-
+/*  esta es la clase qeu estaba antes
     public boolean save(User user) {
         String sql = "INSERT INTO users (username, password, rol) VALUES (?, ?, ?)";
 
@@ -80,6 +77,42 @@ public class UserDao {
 
         return false;
     }
+*/
+public boolean save(User user) {
+    String sql = "INSERT INTO users (username, password, rol) VALUES (?, ?, ?)";
+
+    try (Connection con = conexion.establecerConexion();
+         PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+        ps.setString(1, user.getUserName());
+        ps.setString(2, user.getPassword());
+        ps.setString(3, String.valueOf(user.getRole()));
+
+        int affectedRows = ps.executeUpdate();
+
+        if (affectedRows == 0) {
+            throw new SQLException("No se pudo insertar el usuario.");
+        }
+
+        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                long id = generatedKeys.getLong(1);
+                user.setId(id);  // Actualiza el objeto user con el ID generado
+            } else {
+                throw new SQLException("No se obtuvo el ID generado.");
+            }
+        }
+
+        return true;
+
+    } catch (SQLException e) {
+        System.out.println("Ocurrió un error al registrar el usuario: " + e.getMessage());
+    }
+
+    return false;
+}
+
+
 
     public boolean update(User user) {
         String sql = "UPDATE users SET username = ?, password = ?, rol = ? WHERE id = ?";
@@ -124,6 +157,6 @@ public class UserDao {
         UserDao usu = new UserDao();
         List<User> users = usu.getAllUsers();
         users.forEach(System.out::println);
-    }
- */
+    }*/
+
 }

@@ -4,10 +4,7 @@ import org.IngSoft.database.Conexion;
 import org.IngSoft.models.Client;
 import org.IngSoft.models.Restaurant;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,25 +58,45 @@ public class RestauratDao {
         return false;
     }
 
+
     public boolean save(Restaurant restaurant) {
-        String sql = "INSERT INTO restaurants (name, adress, users_id) VALUES (?, ?, ?)";  // Corregido
+        String sql = "INSERT INTO restaurants (name, adress, users_id) VALUES (?, ?, ?)";
 
         try (Connection con = conexion.establecerConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            // Validación previa: el usuario debe estar asignado
+            if (restaurant.getUserId() <= 0) {
+                System.out.println("❌ Error: el ID del usuario no está asignado al restaurante.");
+                return false;
+            }
 
             ps.setString(1, restaurant.getName());
             ps.setString(2, restaurant.getAddres());
             ps.setLong(3, restaurant.getUserId());
-            ps.executeUpdate();
+
+            int filasAfectadas = ps.executeUpdate();
+            if (filasAfectadas == 0) {
+                System.out.println("❌ No se pudo insertar el restaurante.");
+                return false;
+            }
+
+            // Capturar el ID generado si lo necesitás después
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    restaurant.setId(generatedKeys.getLong(1));
+                }
+            }
 
             return true;
 
         } catch (SQLException e) {
-            System.out.println("Ocurrió un error al registrar el usuario: " + e.getMessage());
+            System.out.println("Ocurrió un error al registrar el restaurante: " + e.getMessage());
         }
 
         return false;
     }
+
 
     public boolean update(Restaurant restaurant) {
         String sql = "UPDATE restaurants SET name = ?, adress = ?, users_id = ? WHERE id = ?";  // Corregido

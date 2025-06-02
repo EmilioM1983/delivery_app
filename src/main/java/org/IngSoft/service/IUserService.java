@@ -10,6 +10,9 @@ public interface IUserService {
     boolean registrarCliente(User user, Client client);
     boolean registrarrestaurant(User user, Restaurant restaurant);
     boolean registrarDealer(User user, Dealer dealer);
+    //boolean registrarNuevoUsuario(String username, String password, String name, Enum.Role role);
+    boolean existeUsuario(String username);
+
     User login(String user, String pass);
     Client getClientByUser(User user);
     Restaurant getRestaurantByUser(User user);

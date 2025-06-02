@@ -2,12 +2,12 @@ package org.IngSoft.ui;
 
 import org.IngSoft.models.*;
 import org.IngSoft.models.Enum.Role;
-import org.IngSoft.service.Userservice;
+import org.IngSoft.service.UserService;
 
 import java.util.Scanner;
 
 public class MenuAppUi {
-    Userservice userservice = new Userservice();
+    UserService userservice = new UserService();
 
     Scanner consolaNum = new Scanner(System.in);
     Scanner consolaText = new Scanner(System.in);
@@ -55,9 +55,12 @@ public class MenuAppUi {
                         }
                     } else {
                         System.out.println("Usuario o contraseña incorrectos.");
+                        break;
                     }
 
-                case 2:
+                case 2: RegisterUsUI registerUI = new RegisterUsUI();
+                    registerUI.mostrarMenuRegistro();
+                    break;
                 case 3:
                     System.out.println("Saliendo del sistema");
                     break;
@@ -93,6 +96,7 @@ public class MenuAppUi {
                     System.out.println("Opción incorrecta");
             }
         }while (opcionCliente!=3);
+        menuPrincipal();
     }
 
     //Restaurant
@@ -116,6 +120,7 @@ public class MenuAppUi {
                     System.out.println("Opción incorrecta");
             }
         } while (opcionRest != 2);
+        menuPrincipal();
     }
 
     //Dealer
@@ -139,12 +144,14 @@ public class MenuAppUi {
                     System.out.println("Opción incorrecta");
             }
         } while (opcionDealer != 2);
+        menuPrincipal();
     }
 
     //Admin
     public void menuAdmin() {
         PaymentUI paymentUI = new PaymentUI();
         paymentUI.menuPagos();
+        menuPrincipal();
     }
 
 }

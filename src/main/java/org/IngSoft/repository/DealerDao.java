@@ -65,7 +65,7 @@ public class DealerDao {
     }
 
     public boolean save(Dealer dealer) {
-        String sql = "INSERT INTO dealer (name, last_name, phone, users_id) VALUES (?, ?, ?, ?)";  // Corregido
+        String sql = "INSERT INTO dealer (name, last_name, phone, users_id) VALUES (?, ?, ?, ?)";
 
         try (Connection con = conexion.establecerConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -74,16 +74,17 @@ public class DealerDao {
             ps.setString(2, dealer.getLastName());
             ps.setString(3, dealer.getPhone());
             ps.setLong(4, dealer.getUserId());
-            ps.executeUpdate();
 
+            ps.executeUpdate();
             return true;
 
         } catch (SQLException e) {
-            System.out.println("Ocurrió un error al registrar el dealer: " + e.getMessage());
+            System.out.println("❌ Ocurrió un error al registrar el dealer: " + e.getMessage());
+            return false;
         }
-
-        return false;
     }
+
+
 
     public boolean update(Dealer dealer) {
         String sql = "UPDATE dealer SET name = ?, last_name = ?, phone = ?, users_id = ? WHERE id = ?";
