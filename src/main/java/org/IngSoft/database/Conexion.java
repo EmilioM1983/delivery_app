@@ -9,7 +9,7 @@ public class Conexion {
 
         //Credenciales
         String usuario = "root";
-        String contrasenia = "emi1";
+        String contrasenia = "Emayer83";
         String bd = "db_delivery";
         String ip = "localhost";
         String puerto = "3306";

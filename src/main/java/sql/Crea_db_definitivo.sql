@@ -10,7 +10,7 @@ USE `db_delivery`;
 
 -- Tabla: users
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `username` VARCHAR(45),
   `password` VARCHAR(45),
   `rol` ENUM('Client', 'Restaurant', 'Dealer', 'Admin'),

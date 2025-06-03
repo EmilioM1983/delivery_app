@@ -58,11 +58,13 @@ public class MenuAppUi {
                         break;
                     }
 
-                case 2: RegisterUsUI registerUI = new RegisterUsUI();
+                case 2:
+                    RegisterUsUI registerUI = new RegisterUsUI();
                     registerUI.mostrarMenuRegistro();
                     break;
                 case 3:
                     System.out.println("Saliendo del sistema");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
