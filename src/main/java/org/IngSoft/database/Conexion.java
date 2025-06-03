@@ -9,7 +9,7 @@ public class Conexion {
 
         //Credenciales
         String usuario = "root";
-        String contrasenia = "Emayer83";
+        String contrasenia = "41813225";
         String bd = "db_delivery";
         String ip = "localhost";
         String puerto = "3306";
@@ -21,9 +21,9 @@ public class Conexion {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 conectar = DriverManager.getConnection(cadena,usuario,contrasenia);
-                //JOptionPane.showMessageDialog(null, "Conexión correcta");
+                JOptionPane.showMessageDialog(null, "Conexión correcta");
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, "No se realizo la conexión "+e.toString());
+                JOptionPane.showMessageDialog(null, "No se realizo la conexión "+e.toString());
             }
             return conectar;
         }
@@ -32,10 +32,10 @@ public class Conexion {
             try {
                 if (conectar!=null && !conectar.isClosed()) {
                     conectar.close();
-                    //JOptionPane.showMessageDialog(null, "Conexión cerrada");
+                    JOptionPane.showMessageDialog(null, "Conexión cerrada");
                 }
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, "No se ha cerrado la conexión"+e.toString());
+                JOptionPane.showMessageDialog(null, "No se ha cerrado la conexión"+e.toString());
             }
         }
     }
