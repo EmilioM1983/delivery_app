@@ -18,7 +18,7 @@ public class ProductDao {
         this.conexion = new Conexion();
     }
 
-    // Crear producto
+
     public long create(Product product) {
         long idGenerado = -1;
         try {
@@ -50,7 +50,7 @@ public class ProductDao {
         return idGenerado;
     }
 
-    // Buscar producto por ID
+
     public Product findById(long id) {
         Product product = null;
         try {
@@ -80,7 +80,7 @@ public class ProductDao {
         return product;
     }
 
-    // Listar todos los productos
+
     public List<Product> findAll() {
         List<Product> products = new ArrayList<>();
         try {
@@ -109,7 +109,7 @@ public class ProductDao {
         return products;
     }
 
-    // Buscar productos por ID de restaurante
+
     public List<Product> findByRestaurant(long restaurantId) {
         List<Product> products = new ArrayList<>();
         try {
@@ -140,7 +140,7 @@ public class ProductDao {
         return products;
     }
 
-    // Actualizar producto
+
     public boolean update(Product product) {
         boolean actualizado = false;
         try {
@@ -165,7 +165,7 @@ public class ProductDao {
         return actualizado;
     }
 
-    // Eliminar producto
+
     public boolean delete(long id) {
         boolean eliminado = false;
         try {

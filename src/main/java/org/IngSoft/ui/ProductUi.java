@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ProductUi {
-    // Atributos
+
     private final ProductService productService;
     private final Scanner scanner;
 
-    // Constructor
+
     public ProductUi() {
         this.productService = new ProductService();
         this.scanner = new Scanner(System.in);

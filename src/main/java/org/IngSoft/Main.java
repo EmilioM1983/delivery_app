@@ -10,9 +10,7 @@ public class Main {
         ProductUi productUi = new ProductUi();
 
 
-        // Crear un producto y asignarlo a un restaurant
-        System.out.println("Creando un producto de ejemplo para el restaurante...");
-        productUi.crearProductoConDatos("Pizza Margarita", 12.99, 1);
+
 
         // Mostrar el menú de la aplicación para gestionar productos
         productUi.mostrarMenu();

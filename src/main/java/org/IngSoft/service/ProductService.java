@@ -6,10 +6,10 @@ import org.IngSoft.repository.ProductDao;
 import java.util.List;
 
 public class ProductService {
-    // Atributos
+
     private final ProductDao productDao;
 
-    // Constructor
+
     public ProductService() {
         this.productDao = new ProductDao();
     }
