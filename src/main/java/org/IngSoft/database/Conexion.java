@@ -9,7 +9,7 @@ public class Conexion {
 
         //Credenciales
         String usuario = "root";
-        String contrasenia = "Emayer83";
+        String contrasenia = "420386car19";
         String bd = "db_delivery";
         String ip = "localhost";
         String puerto = "3306";
@@ -32,10 +32,10 @@ public class Conexion {
             try {
                 if (conectar!=null && !conectar.isClosed()) {
                     conectar.close();
-                    //JOptionPane.showMessageDialog(null, "Conexión cerrada");
+                   // JOptionPane.showMessageDialog(null, "Conexión cerrada");
                 }
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, "No se ha cerrado la conexión"+e.toString());
+               // JOptionPane.showMessageDialog(null, "No se ha cerrado la conexión"+e.toString());
             }
         }
     }
