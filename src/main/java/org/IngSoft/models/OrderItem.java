@@ -6,8 +6,6 @@ public class OrderItem {
     private int quantity;
     private long productId;
     private long orderId;
-    private long productsRestaurantsIdRestaurants; // Nuevo campo
-    private long restaurantId;
 
     // Constructores
     public OrderItem() {
@@ -17,8 +15,6 @@ public class OrderItem {
         this.quantity = quantity;
         this.productId = productId;
         this.orderId = orderId;
-        this.productsRestaurantsIdRestaurants = productsRestaurantsIdRestaurants;
-
     }
 
     // Gets & Sets
@@ -52,14 +48,6 @@ public class OrderItem {
 
     public void setOrderId(long orderId) {
         this.orderId = orderId;
-    }
-
-    public long getProductsRestaurantsIdRestaurants() {
-        return productsRestaurantsIdRestaurants;
-    }
-
-    public void setProductsRestaurantsIdRestaurants(long productsRestaurantsIdRestaurants) {
-        this.productsRestaurantsIdRestaurants = productsRestaurantsIdRestaurants;
     }
 
 }

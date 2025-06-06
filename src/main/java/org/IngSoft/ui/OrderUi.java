@@ -3,45 +3,42 @@ package org.IngSoft.ui;
 import org.IngSoft.models.OrderItem;
 import org.IngSoft.service.OrderService;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class OrderUi {
-    private OrderService service;
-    private Scanner scanner;
 
-    public OrderUi(Connection connection) {
-        this.service = new OrderService(connection);
-        this.scanner = new Scanner(System.in);
-    }
+    OrderService service = new OrderService();
+    Scanner scanner = new Scanner(System.in);
+    List<OrderItem> listItems = new ArrayList<>();
 
     public void iniciar() {
         try {
             System.out.print("Ingrese ID del cliente: ");
             int customerId = Integer.parseInt(scanner.nextLine());
 
-            System.out.print("Ingrese ID del restaurante: ");
-            long restaurantId = Long.parseLong(scanner.nextLine());
-
-            List<OrderItem> items = new ArrayList<>();
-            while (true) {
+            boolean opcion = true;
+            while (opcion) {
                 System.out.print("Ingrese ID del producto (o 0 para finalizar): ");
                 int productId = Integer.parseInt(scanner.nextLine());
-                if (productId == 0) break;
 
-                System.out.print("Ingrese cantidad: ");
-                int quantity = Integer.parseInt(scanner.nextLine());
+                if (productId == 0) {
+                    opcion = false;
+                } else {
+                    System.out.print("Ingrese cantidad: ");
+                    int quantity = Integer.parseInt(scanner.nextLine());
 
-                OrderItem item = new OrderItem();  // Declarás y creás acá
-                item.setProductId(productId);
-                item.setQuantity(quantity);
-
+                    OrderItem item = new OrderItem();
+                    item.setProductId(productId);
+                    item.setQuantity(quantity);
+                    listItems.add(item);
+                }
             }
 
-            service.createOrder(customerId, items);
-        } catch (SQLException e) {
-            System.err.println("Error al crear pedido: " + e.getMessage());
+            service.createOrder(customerId, listItems);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

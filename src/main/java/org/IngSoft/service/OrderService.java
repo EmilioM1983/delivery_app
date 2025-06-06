@@ -5,34 +5,33 @@ import org.IngSoft.models.OrderItem;
 import org.IngSoft.repository.OrderDao;
 import org.IngSoft.repository.OrderItemDao;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class OrderService {
-    private OrderDao orderDao;
-    private OrderItemDao itemDao;
+    OrderDao orderDao = new OrderDao();
+    OrderItemDao itemDao = new OrderItemDao();
 
-    public OrderService(Connection connection) {
-        this.orderDao = new OrderDao(connection);
-        this.itemDao = new OrderItemDao(connection);
-    }
+    public void createOrder(int customerId, List<OrderItem> items) {
+        try {
 
-    public void createOrder(int customerId, List<OrderItem> items) throws SQLException {
-        Order order = new Order();
-        order.setClientId(customerId);
-        order.setCreatedAt(java.time.LocalDate.now());
-        order.setStatusOrder(Order.StatusOrder.Confirmed);
+            Order order = new Order();
+            order.setClientId(customerId);
+            order.setCreatedAt(java.time.LocalDate.now());
+            order.setStatusOrder(Order.StatusOrder.Confirmed);
 
-        long orderId = orderDao.createOrder(order);
+            long orderId = orderDao.createOrder(order);
 
-        for (OrderItem item : items) {
-            item.setOrderId(orderId);
-            itemDao.createOrderItem(item);
+            for (OrderItem item : items) {
+                item.setOrderId(orderId);
+                System.out.println("→ Agregando item - Producto ID: " + item.getProductId() + ", Cantidad: " + item.getQuantity());
+                itemDao.createOrderItem(item);
+            }
+
+            System.out.println("✔ Pedido registrado correctamente.");
+        } catch (SQLException e) {
+            System.err.println("❌ Error al registrar el pedido: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        System.out.println("Pedido creado con éxito. ID: " + orderId);
     }
-
 }

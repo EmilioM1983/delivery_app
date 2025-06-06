@@ -54,8 +54,7 @@ public class Order {
         this.clientId = clientId;
     }
 
-    // Enum para representar los estados del pedido
-    public enum StatusOrder {
+        public enum StatusOrder {
 
         Confirmed("Confirmado"),
 
