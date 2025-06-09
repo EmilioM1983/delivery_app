@@ -9,8 +9,6 @@ import org.IngSoft.ui.PaymentUI;
 public class Main {
     public static void main(String[] args) {
 
-        MenuAppUi menuAppUi = new MenuAppUi();
-        menuAppUi.menuPrincipal();
         }
     }
 
