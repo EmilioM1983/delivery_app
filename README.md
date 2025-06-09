@@ -3,13 +3,34 @@ Aplicación de consola funcional que simule una plataforma de delivery de alimen
 
 ## 01 - Github y Gitflow
 * El proyecto seguira el marco de trabajo de gitflow.<br>
-![{C33FA2DE-BD80-40D7-B391-EF9B1FA11109}](https://github.com/user-attachments/assets/58372851-561e-4199-8fd2-a40d0a05a441)
+
+![Esquema de Git Flow](git_flow.jpg)
 
 
 
-* **git clone https://github.com/EmilioM1983/delivery-app.git ** -> clona el proyecto base
+* **git clone https://github.com/EmilioM1983/delivery_app ** -> clona el proyecto base
 
 * Al clonar el proyecto debe seguirse los siguientes pasos:
+    * Después de clonar el repositorio y estar en el directorio del proyecto, ejecuta: 
+        **git fetch --all**
+      * Ahora puedes ver todas las ramas remotas disponibles:
+        **git branch -a**
+      * Esto debería mostrarte algo como esto...
+        * main
+        * develop
+        * release
+        * remotes/origin/develop
+        * remotes/origin/release
+        * remotes/origin/feature/autenticacion-pagos
+        * remotes/origin/feature/menus-restaurantes
+        * remotes/origin/feature/pedidos
+        * remotes/origin/feature/repartidores
+        * remotes/origin/feature/rastreo-pedido
+
+      * Para cambiar a una rama remota específica, puedes hacer:
+        **git checkout develop**
+       o cualquiera de las demás ramas que quieras.
+    
     * **git branch** -> Indica que estan sobre la rama main
     * **git checkout develop** -> Cambiar a develop
     * **git pull origin develop** -> Asegurarse de tener la última versión
