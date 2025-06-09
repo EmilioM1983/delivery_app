@@ -1,28 +1,27 @@
 package org.IngSoft.models;
 
-import org.IngSoft.models.Enum.StatusOrder;
-
 import java.time.LocalDate;
 
 public class Order {
-    //Atributos
+    // Atributos
     private long id;
-    private LocalDate CreatedAt;
+    private LocalDate createdAt;
     private StatusOrder statusOrder;
     private long clientId;
 
-    //Constructores
+    // Constructor vacio
     public Order() {
     }
 
-    public Order(LocalDate createdAt, StatusOrder statusOrder, long clientId) {
-        CreatedAt = createdAt;
+    // Constructor completo
+    public Order( long id, LocalDate createdAt, StatusOrder statusOrder, long clientId) {
+        this.id = id;
+        this.createdAt = createdAt;
         this.statusOrder = statusOrder;
         this.clientId = clientId;
     }
 
-    //Gets & Sets
-
+     // Getters y Setters
     public long getId() {
         return id;
     }
@@ -32,11 +31,11 @@ public class Order {
     }
 
     public LocalDate getCreatedAt() {
-        return CreatedAt;
+        return createdAt;
     }
 
     public void setCreatedAt(LocalDate createdAt) {
-        CreatedAt = createdAt;
+        this.createdAt = createdAt;
     }
 
     public StatusOrder getStatusOrder() {
@@ -54,4 +53,28 @@ public class Order {
     public void setClientId(long clientId) {
         this.clientId = clientId;
     }
+
+        public enum StatusOrder {
+
+        Confirmed("Confirmado"),
+
+        Cancel("Cancelado");
+
+        private final String descripcion;
+
+        StatusOrder(String descripcion) {
+            this.descripcion = descripcion;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        @Override
+        public String toString() {
+            return descripcion;
+        }
+    }
 }
+
+

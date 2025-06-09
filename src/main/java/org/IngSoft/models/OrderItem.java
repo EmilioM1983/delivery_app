@@ -1,23 +1,23 @@
 package org.IngSoft.models;
 
 public class OrderItem {
-    //Atributos
+    // Atributos
     private long id;
     private int quantity;
     private long productId;
     private long orderId;
 
-    //Constructores
+    // Constructores
     public OrderItem() {
     }
 
-    public OrderItem(int quantity, long productId, long orderId) {
+    public OrderItem(int quantity, long productId, long orderId, long productsRestaurantsIdRestaurants) {
         this.quantity = quantity;
         this.productId = productId;
         this.orderId = orderId;
     }
 
-    //Gets & Sets
+    // Gets & Sets
     public long getId() {
         return id;
     }
@@ -49,4 +49,5 @@ public class OrderItem {
     public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
+
 }
