@@ -1,6 +1,7 @@
 package org.IngSoft.ui;
 
 import org.IngSoft.models.Product;
+import org.IngSoft.models.Restaurant;
 import org.IngSoft.service.ProductService;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class ProductUi {
     }
 
 
-    public void mostrarMenu() {
+    public void mostrarMenu(Restaurant restaurant) {
         boolean salir = false;
 
         while (!salir) {
@@ -38,7 +39,7 @@ public class ProductUi {
 
             switch (opcion) {
                 case 1:
-                    crearProducto();
+                    crearProducto(restaurant);
                     break;
                 case 2:
                     buscarProductoPorId();
@@ -65,7 +66,7 @@ public class ProductUi {
     }
 
 
-    public Product crearProducto() {
+    public Product crearProducto(Restaurant restaurant) {
         System.out.println("\n--- Crear Nuevo Producto ---");
 
         System.out.print("Nombre del producto: ");
@@ -75,9 +76,8 @@ public class ProductUi {
         double precio = scanner.nextDouble();
         scanner.nextLine(); // Limpiar buffer
 
-        System.out.print("ID del restaurante: ");
-        long restauranteId = scanner.nextLong();
-        scanner.nextLine(); // Limpiar buffer
+        long restauranteId = restaurant.getId();
+
 
         Product producto = productService.createProduct(nombre, precio, restauranteId);
 

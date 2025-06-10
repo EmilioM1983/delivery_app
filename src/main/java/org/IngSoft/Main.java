@@ -1,7 +1,11 @@
 package org.IngSoft;
 
-public class Main {
-    public static void main(String[] args) {
+import org.IngSoft.ui.MenuAppUi;
 
+public class
+Main {
+    public static void main(String[] args) {
+        MenuAppUi menuAppUi = new MenuAppUi();
+        menuAppUi.menuPrincipal();
         }
     }

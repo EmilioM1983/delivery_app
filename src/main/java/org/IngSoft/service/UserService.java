@@ -94,6 +94,10 @@ public class UserService implements IUserService {
         return true;
     }
 
+    @Override
+    public List<Dealer> listarRepartidores() {
+        return dealerDao.getAllDealers();
+    }
 
 
     @Override

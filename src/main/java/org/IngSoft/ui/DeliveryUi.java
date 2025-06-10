@@ -20,32 +20,22 @@ public class DeliveryUi {
         int opcion;
         do {
             System.out.println("\n--- MENÚ DE DELIVERY ---");
-            System.out.println("1. Asignar pedido a repartidor");
-            System.out.println("2. Listar todos los deliveries");
-            System.out.println("3. Cambiar estado de un delivery");
-            System.out.println("4. Eliminar un delivery");
+            System.out.println("1. Listar todos los deliveries");
+            System.out.println("2. Cambiar estado de un delivery");
+            System.out.println("3. Eliminar un delivery");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // limpiar buffer
 
             switch (opcion) {
-                case 1 -> asignarPedido();
-                case 2 -> listarDeliveries();
-                case 3 -> cambiarEstado();
-                case 4 -> eliminarDelivery();
-                case 0 -> System.out.println("Saliendo del sistema...");
+                case 1 -> listarDeliveries();
+                case 2 -> cambiarEstado();
+                case 3 -> eliminarDelivery();
+                case 0 -> System.out.println("Saliendo de gestion deliverys...");
                 default -> System.out.println("❌ Opción inválida.");
             }
         } while (opcion != 0);
-    }
-
-    private void asignarPedido() {
-        System.out.print("Ingrese ID del pedido: ");
-        long orderId = scanner.nextLong();
-        System.out.print("Ingrese ID del repartidor: ");
-        long dealerId = scanner.nextLong();
-        deliveryService.asignarPedidoARepartidor(orderId, dealerId);
     }
 
     private void listarDeliveries() {

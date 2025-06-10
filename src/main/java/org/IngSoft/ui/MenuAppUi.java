@@ -75,21 +75,23 @@ public class MenuAppUi {
 
     //Cliente
     public void menuCliente(){
+        OrderUi orderUi = new OrderUi();
+        RastreoUi rastreoUi = new RastreoUi();
         do {
             Client cliente = (Client) SessionData.getEntidad();
             System.out.println("Bienvenido querido cliente " + cliente.getName() + "!");
             System.out.println("""
             1. Generar pedido.
             2. Rastrear pedido.
-            3. Salir.
+            3. Cerrar sesión.
             """);
             opcionCliente = consolaNum.nextInt();
             switch (opcionCliente){
                 case 1:
-                    System.out.println("Generar pedido");
+                    orderUi.iniciar(cliente);
                     break;
                 case 2:
-                    System.out.println("Rastreo de pedido");
+                    rastreoUi.iniciar();
                     break;
                 case 3:
                     System.out.println("cerrando sesión");
@@ -108,12 +110,13 @@ public class MenuAppUi {
             System.out.println("Bienvenido restaurant " + restaurant.getName() + "!");
             System.out.println("""
                         1. Gestión menus.
-                        2. Salir
+                        2. Cerrar sesión
                     """);
             opcionRest = consolaNum.nextInt();
             switch (opcionRest) {
                 case 1:
-                    System.out.println("Gestionar menus");
+                    ProductUi productUi = new ProductUi();
+                    productUi.mostrarMenu(restaurant);
                     break;
                 case 2:
                     System.out.println("Cerrando su sesión");
@@ -132,12 +135,13 @@ public class MenuAppUi {
             System.out.println("Bienvenido querido repartidor " + dealer.getName() + "!");
             System.out.println("""
                         1. Gestión pedidos.
-                        2. Salir
+                        2. Cerrar sesión
                     """);
             opcionDealer = consolaNum.nextInt();
             switch (opcionDealer) {
                 case 1:
-                    System.out.println("Gestionar pedidos");
+                    DeliveryUi deliveryUi = new DeliveryUi();
+                    deliveryUi.mostrarMenu();
                     break;
                 case 2:
                     System.out.println("Cerrando su sesión");

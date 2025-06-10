@@ -11,8 +11,8 @@ import java.util.List;
 public class OrderService {
     OrderDao orderDao = new OrderDao();
     OrderItemDao itemDao = new OrderItemDao();
-
-    public void createOrder(int customerId, List<OrderItem> items) {
+    long orderId;
+    public long createOrder(int customerId, List<OrderItem> items) {
         try {
 
             Order order = new Order();
@@ -20,7 +20,7 @@ public class OrderService {
             order.setCreatedAt(java.time.LocalDate.now());
             order.setStatusOrder(Order.StatusOrder.Confirmed);
 
-            long orderId = orderDao.createOrder(order);
+            orderId = orderDao.createOrder(order);
 
             for (OrderItem item : items) {
                 item.setOrderId(orderId);
@@ -28,10 +28,11 @@ public class OrderService {
                 itemDao.createOrderItem(item);
             }
 
-            System.out.println("✔ Pedido registrado correctamente.");
+            System.out.println("✔ Pedido registrado correctamente, con el id de orden numero: " + orderId);
         } catch (SQLException e) {
             System.err.println("❌ Error al registrar el pedido: " + e.getMessage());
             e.printStackTrace();
         }
+        return orderId;
     }
 }
